@@ -7,7 +7,7 @@ if(NOT CMAKE_CXX_STANDARD)
 endif()
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-  add_compile_options(-Wall -Wextra -Wpedantic)
+  add_compile_options(-Wextra -Wpedantic)
 endif()
 
 ## Find catkin macros and libraries
@@ -34,7 +34,6 @@ endif()
 ## Specify additional locations of header files
 include_directories(
   include
-  ${catkin_INCLUDE_DIRS}
   ${EIGEN3_INCLUDE_DIR}
 )
 
@@ -54,10 +53,6 @@ add_library(${PROJECT_NAME}
    src/iterators/LineIterator.cpp
    src/iterators/SlidingWindowIterator.cpp
 )
-
-#target_link_libraries(${PROJECT_NAME}
-#  ${catkin_LIBRARIES}
-#)
 
 #############
 ## Install ##

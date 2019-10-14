@@ -189,7 +189,8 @@ float GridMap::atPosition(const std::string& layer, const Position& position, In
         if (atPositionLinearInterpolated(layer, position, value))
           return value;
         else
-            interpolationMethod = InterpolationMethods::INTER_NEAREST;
+          interpolationMethod = InterpolationMethods::INTER_NEAREST;
+        break;
       }
       case  InterpolationMethods::INTER_NEAREST:
       {
@@ -204,6 +205,7 @@ float GridMap::atPosition(const std::string& layer, const Position& position, In
       default:
         throw std::runtime_error("GridMap::atPosition(...) : Specified interpolation method not implemented.");
   }
+  return 0.0;
 }
 
 float& GridMap::at(const std::string& layer, const Index& index)
@@ -718,7 +720,7 @@ void GridMap::convertToDefaultStartIndex()
 }
 
 Position GridMap::getClosestPositionInMap(const Position& position) const {
-  if (getSize().x()<1u || getSize().y()<1u) {
+  if (getSize().x()<1 || getSize().y()<1) {
     return position_;
   }
 
